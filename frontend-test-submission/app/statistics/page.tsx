@@ -2,17 +2,17 @@
 
 import { useEffect } from 'react';
 import Layout from '@/components/Layout';
-import UrlShortener from '@/components/UrlShortener';
+import Statistics from '@/components/Statistics';
 import AuthComponent from '@/components/AuthComponent';
-import { useAuth } from './layout';
+import { useAuth } from '../layout';
 import { Box, CircularProgress, Typography } from '@mui/material';
 
-export default function Home() {
+export default function StatisticsPage() {
   const { isAuthenticated, loading, logger } = useAuth();
 
   useEffect(() => {
     if (logger) {
-      logger.logPageView('Home Page', {
+      logger.logPageView('Statistics Page', {
         authenticated: isAuthenticated,
         timestamp: new Date().toISOString()
       });
@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <UrlShortener />
+      <Statistics />
     </Layout>
   );
 }
