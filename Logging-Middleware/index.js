@@ -8,4 +8,4 @@ module.exports = {
   warn: Logger.warn,
   info: Logger.info,
   debug: Logger.debug
-};
+};  
