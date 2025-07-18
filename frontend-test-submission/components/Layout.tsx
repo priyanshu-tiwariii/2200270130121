@@ -54,14 +54,14 @@ const Layout = ({ children }: LayoutProps) => {
   const [userMenuAnchor, setUserMenuAnchor] = useState<null | HTMLElement>(null);
 
   useEffect(() => {
-    // Set current tab based on route
+  
     if (pathname === '/') {
       setCurrentTab(0);
     } else if (pathname === '/statistics') {
       setCurrentTab(1);
     }
 
-    // Log page view (mandatory logging)
+  
     if (logger) {
       logger.logPageView(pathname, {
         authenticated: isAuthenticated,
@@ -71,7 +71,7 @@ const Layout = ({ children }: LayoutProps) => {
   }, [pathname, isAuthenticated, user, logger]);
 
   useEffect(() => {
-    // Check backend connection
+  
     checkBackendHealth();
   }, []);
 
@@ -87,7 +87,7 @@ const Layout = ({ children }: LayoutProps) => {
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setCurrentTab(newValue);
     
-    // Log user action (mandatory logging)
+   
     if (logger) {
       logger.logUserAction('Navigation Tab Changed', { 
         from: currentTab, 
@@ -155,7 +155,7 @@ const Layout = ({ children }: LayoutProps) => {
             URL Shortener
           </Typography>
           
-          {/* Authentication Status */}
+        
           {isAuthenticated && user && (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mr: 2 }}>
               <Chip
@@ -179,7 +179,7 @@ const Layout = ({ children }: LayoutProps) => {
             </Box>
           )}
           
-          {/* Backend Status */}
+       
           <Tooltip title={getStatusText()}>
             <IconButton color="inherit" size="small">
               <HealthIcon color={getStatusColor()} />
@@ -187,7 +187,7 @@ const Layout = ({ children }: LayoutProps) => {
           </Tooltip>
         </Toolbar>
         
-        {/* Navigation Tabs - Only show if authenticated */}
+       
         {isAuthenticated && (
           <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: 'primary.dark' }}>
             <Container maxWidth="lg">
